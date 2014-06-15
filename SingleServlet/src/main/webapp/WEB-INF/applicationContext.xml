@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="signUp" class="com.single.controllers.SignUpController"></bean>
+	
+	<bean id="json" class="com.single.controllers.JSONController"></bean>
+	
+	<bean id="upload" class="com.single.controllers.UploadController"></bean>
+	
+	<bean id="mixCont" class="com.single.controllers.MixController"></bean>
+	
+	<bean id="student" class="com.single.controllers.StudentController"></bean>
+	
+	<bean id="studentDyna" class="com.single.controllers.StudentDynaResponse"></bean>
+
+</beans>

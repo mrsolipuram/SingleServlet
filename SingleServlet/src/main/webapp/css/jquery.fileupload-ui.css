@@ -1,0 +1,150 @@
+
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url('../fonts/opensans-regular-webfont.eot');
+    src: url('../fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-regular-webfont.woff') format('woff'),
+         url('../fonts/opensans-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSansSemiboldRegular';
+    src: url('../fonts/opensans-semibold-webfont.eot');
+    src: url('../fonts/opensans-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-semibold-webfont.woff') format('woff'),
+         url('../fonts/opensans-semibold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DINLightRegular';
+    src: url('../fonts/ufonts.com_din-light-webfont.eot');
+    src: url('../fonts/ufonts.com_din-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/ufonts.com_din-light-webfont.woff') format('woff'),
+         url('../fonts/ufonts.com_din-light-webfont.ttf') format('truetype'),
+         url('../fonts/ufonts.com_din-light-webfont.svg#DINLightRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'DINMittelschriftStdRegular';
+    src: url('../fonts/dinmittelschriftstd_1-webfont.eot');
+    src: url('../fonts/dinmittelschriftstd_1-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dinmittelschriftstd_1-webfont.woff') format('woff'),
+         url('../fonts/dinmittelschriftstd_1-webfont.ttf') format('truetype'),
+         url('../fonts/dinmittelschriftstd_1-webfont.svg#DINMittelschriftStdRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'DINEngschriftStdRegular';
+    src: url('../fonts/dinengschriftstd_1-webfont.eot');
+    src: url('../fonts/dinengschriftstd_1-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dinengschriftstd_1-webfont.woff') format('woff'),
+         url('../fonts/dinengschriftstd_1-webfont.ttf') format('truetype'),
+         url('../fonts/dinengschriftstd_1-webfont.svg#DINEngschriftStdRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* div.file_upload { */
+/*   position: relative; */
+/*   overflow: hidden; */
+/*   cursor: pointer; */
+/*   border:#cccccc 1px solid;font-size:12px; */
+/* 	background: #e8e8e8; */
+/* 	padding:6px 15px; */
+/* 	background:-moz-linear-gradient(center top , #99CE3E 0%, #57A51D 100%) repeat scroll 0 0 transparent; */
+/* 	background: -webkit-linear-gradient(center top , #99CE3E 0%, #57A51D 100%) repeat scroll 0 0 transparent; */
+/* 	background: -o-linear-gradient(center top , #99CE3E 0%, #57A51D 100%) repeat scroll 0 0 transparent; */
+/* 	background: -ms-linear-gradient(center top , #99CE3E 0%, #57A51D 100%) repeat scroll 0 0 transparent; */
+/* 	background: linear-gradient(top,   #99CE3E 0%,#57A51D 100%); */
+/* 	float:left; */
+/* 	padding:3px 6px; */
+/* 	border: 1px solid #42A723; */
+/*    color: #FFFFFF; */
+/*    font-family: 'OpenSansSemiboldRegular'; */
+/*    font-weight: 500; */
+/*    border-radius:5px; */
+/* } */
+
+div.file_upload {
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+}
+.uploadDiv{ width:100%; float:left; clear:both; margin:10px 0;}
+.uploadButton{display: inline-block;position: relative;cursor: pointer;padding:4px 6px;
+color:#fff !important;border:#7ca722 1px solid!important;font-size:14px!important;font-family: 'OpenSansSemiboldRegular'; font-weight:500!important;
+	background: #83c639!important;
+	background: -moz-linear-gradient(top,  #9ed33d 0%, #83c639 100%)!important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9ed33d), color-stop(100%,#83c639))!important;
+	background: -webkit-linear-gradient(top,  #9ed33d 0%,#83c639 100%)!important;
+	background: -o-linear-gradient(top,  #9ed33d 0%,#83c639 100%)!important;
+	background: -ms-linear-gradient(top,  #9ed33d 0%,#83c639 100%)!important;
+	background: linear-gradient(top,  #9ed33d 0%,#83c639 100%)!important;}
+	
+.drag-handle .drag-controls img{position:relative;margin-top:-5px;}
+
+div.file_upload_small {
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  font-size: auto;
+  background: palegreen;
+  border: 1px solid limegreen;
+}
+
+div.file_upload_large {
+  width: 100%;
+  height: 150px;
+  line-height: 150px;
+  font-size: 20px;
+  background: palegreen;
+  border: 1px solid limegreen;
+}
+
+div.file_upload_highlight {
+  background: lawngreen;
+}
+
+div.file_upload input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  border: 300px solid transparent;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  filter: alpha(opacity=0);
+  -o-transform: translate(-300px, -300px) scale(10);
+  -moz-transform: translate(-800px, 0) scale(10);
+  cursor: pointer;
+  font-family:arial;
+}
+
+.file_upload iframe, .file_upload button {
+  display: none;
+}
+
+.file_upload_preview img {
+  width: 80px;
+}
+
+.file_upload_progress .ui-progressbar-value {
+  background: url(pbar-ani.gif);
+}
+
+.file_upload_progress div {
+  width: 150px;
+  height: 15px;
+}
+
+.file_upload_cancel button {
+  cursor: pointer;
+}
