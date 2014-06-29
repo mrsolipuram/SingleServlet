@@ -1,5 +1,6 @@
 /**
- * 
+ * It is an example controller for singup and redirecting to welcome.jsp
+ * It is directly implementing the BaseController
  */
 package com.single.controllers;
 

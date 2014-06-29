@@ -1,5 +1,6 @@
 /**
- * 
+ * It is an example class for sending json response
+ * this is not required to integrate this framework
  */
 package com.single.beans;
 

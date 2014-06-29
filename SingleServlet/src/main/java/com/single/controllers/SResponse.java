@@ -1,5 +1,6 @@
 /**
- * 
+ * This annotation is used to define the response type of the controller method 
+ * default value is sendredirect
  */
 package com.single.controllers;
 
@@ -20,5 +21,9 @@ public @interface SResponse {
 		   JSON, SEND_REDIRECT, FORWARD
 		}
 	 
+	/**
+	 * it will defines the response type of the controller method
+	 * @return
+	 */
 	ResType ResType() default ResType.SEND_REDIRECT;
 }

@@ -1,3 +1,7 @@
+/**
+ * It is an example controller for sending json response to client
+ * It is directly implementing the BaseController
+ */
 package com.single.controllers;
 
 import java.io.IOException;

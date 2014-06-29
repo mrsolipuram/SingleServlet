@@ -15,5 +15,9 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	<bean id="student" class="com.single.controllers.StudentController"></bean>
 	
 	<bean id="studentDyna" class="com.single.controllers.StudentDynaResponse"></bean>
+	
+	<bean id="sProperties" class="com.single.properties.SProperties">
+		<constructor-arg name="filePath"><value>messages.properties</value></constructor-arg>
+	</bean>
 
 </beans>

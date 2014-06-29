@@ -1,5 +1,11 @@
 /**
+ * This is an example for DispatchController class.
+ * Developer can write his own method name but the parameter must be request, response
  * 
+ * In this example it is handling two types of requests 
+ * sending json data and sendredirect for student signup.
+ * 
+ * The method name should be specivied in request using parameter
  */
 package com.single.controllers;
 
