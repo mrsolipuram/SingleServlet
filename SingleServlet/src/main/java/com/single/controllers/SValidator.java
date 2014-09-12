@@ -9,10 +9,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.validator.BeanErrors;
-
 /**
  * 
  * @author madhava
@@ -38,6 +34,8 @@ public @interface SValidator {
 	 * 
 	 * @return
 	 */
-	String METHOD_NAME();
+	String METHOD_NAME() default "";
+	
+	String FORM_ID() default "";
 
 }

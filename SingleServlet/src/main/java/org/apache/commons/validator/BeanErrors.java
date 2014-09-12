@@ -31,6 +31,10 @@ public class BeanErrors {
 		errors.put(key, sProperties.getProperty(value, value));
 	}
 	
+	public void addMessage(String key,String value){
+		errors.put(key, value);
+	}
+	
 	public Map<String, Object> getErrors(){
 		return errors;
 	}

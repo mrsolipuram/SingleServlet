@@ -100,6 +100,20 @@
 	<br> Get Student json
 	<input type="button" value="getJson" onclick="getStudentDynaData()">
 	<div id="result3"></div>
+	
+	<br> StudentSignup json validations
+	<form action="./studentDyna" method="post">
+		<input type="hidden" name="parameter" value="studentRedirectJSONValidate">
+		<p>
+			First Name<input type="text" name="firstName" />
+		</p>
+		<p>
+			EmailId:<input type="text" name="emailId">
+		</p>
+		<p>
+			<input type="submit" value="submit">
+		</p>
+	</form>
 </body>
 <script type="text/javascript">
 	function getData() {

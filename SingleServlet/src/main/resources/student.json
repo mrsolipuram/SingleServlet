@@ -1,0 +1,33 @@
+{
+"studentForm":{
+	"rules":{
+		"firstName":[
+			{"rule":"required","message":"name.required"}
+		],
+		"emailId":[
+			{"rule":"required","message":"email.required"},
+			{"rule":"email"}
+		]
+	}
+},
+"studentFormOld":{
+	"rules":{
+		"firstName":{
+			"required":true
+		},
+		"emailId":{
+			"required":true,
+			"email":true
+		}
+	},
+	"messages":{
+		"firstName":{
+			"required":"name.required"
+		},
+		"emailId":{
+			"required":"email.required",
+			"email":"email.invalied"
+		}
+	}
+}
+}

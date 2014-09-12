@@ -19,15 +19,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.validator.BeanErrors;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.google.gson.Gson;
 import com.single.controllers.SResponse.ResType;
+import com.single.validator.PerformValidations;
+import com.single.validator.SValidationRules;
 
 /**
  * @author madhava
  * 
  */
 public class DynaResponseController implements BaseController {
+
+	private SValidationRules validationRules;
+
+	public SValidationRules getValidationRules() {
+		return validationRules;
+	}
+
+	public void setValidationRules(SValidationRules validationRules) {
+		this.validationRules = validationRules;
+	}
 
 	public final void execute(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -115,27 +129,39 @@ public class DynaResponseController implements BaseController {
 				Object validatorObject = null;
 				// creating arguments for calling validation method
 				Object[] args = new Object[] { req, errors };
+				// json based validations based on form name
+
+				if (!sValidator.FORM_ID().equals("")) {
+					if (validationRules == null) {
+						getValidationRulesFmCtxt(req);
+					}
+					PerformValidations pv = new PerformValidations();
+					pv.performValidations(req, errors, sValidator.FORM_ID(),
+							validationRules);
+				}
 				// it will execute if user doesn't specify the validation calss
 				// in SValidator annotaion it will treat as same controller
 				// class
-				if (sValidator.CLASS_NAME().equals("SameClass")) {
-					validatorClass = this.getClass();
-					validatorObject = this;
-				} else {
+				else {
+					if (sValidator.CLASS_NAME().equals("SameClass")) {
+						validatorClass = this.getClass();
+						validatorObject = this;
+					} else {
 					// it will loads and create validationn object for each
 					// request
-					validatorClass = Class.forName(sValidator.CLASS_NAME());
-					validatorObject = validatorClass.newInstance();
+						validatorClass = Class.forName(sValidator.CLASS_NAME());
+						validatorObject = validatorClass.newInstance();
+					}
+						Method method = validatorClass.getMethod(
+								sValidator.METHOD_NAME(), types);
+					if (method == null) {
+						System.out
+								.println("validation method is not found: or signature is not correct");
+					}
+					// invoking the validation method
+					method.invoke(validatorObject, args);
+					// if validation method adds any validation messages it will
 				}
-				Method method = validatorClass.getMethod(
-						sValidator.METHOD_NAME(), types);
-				if (method == null) {
-					System.out
-							.println("validation method is not found: or signature is not correct");
-				}
-				// invoking the validation method
-				method.invoke(validatorObject, args);
-				// if validation method adds any validation messages it will
 				// redirect to validation page
 				// the error messages are sent to client based on SResponse of
 				// controller method
@@ -162,6 +188,13 @@ public class DynaResponseController implements BaseController {
 		}
 	}
 
+	private void getValidationRulesFmCtxt(HttpServletRequest req) {
+		setValidationRules((SValidationRules) WebApplicationContextUtils
+				.getWebApplicationContext(SWebUtil.getServletContext())
+				.getBean("validationRules"));
+
+	}
+
 	/**
 	 * redirecting the request to specfic url
 	 * 
@@ -177,6 +210,7 @@ public class DynaResponseController implements BaseController {
 
 	/**
 	 * forwarding the request to another request
+	 * 
 	 * @param req
 	 * @param resp
 	 * @param result
@@ -192,6 +226,7 @@ public class DynaResponseController implements BaseController {
 
 	/**
 	 * Sending the json date using google Gson library
+	 * 
 	 * @param req
 	 * @param resp
 	 * @param result

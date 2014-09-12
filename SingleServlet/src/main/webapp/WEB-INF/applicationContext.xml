@@ -19,5 +19,12 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	<bean id="sProperties" class="com.single.properties.SProperties">
 		<constructor-arg name="filePath"><value>messages.properties</value></constructor-arg>
 	</bean>
+	
+	<bean id="baseValidator" class="com.single.validator.SBaseValidator"></bean>
+	
+	<bean id="validationRules" class="com.single.validator.SValidationRules" init-method="init">
+		<property name="fileName" value="student.json"></property>
+		<property name="baseValidator" ref="baseValidator"></property>
+	</bean>
 
 </beans>

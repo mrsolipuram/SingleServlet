@@ -85,6 +85,16 @@ public class StudentDynaResponse extends DynaResponseController {
 		s.setName("dynares");
 		return s;
 	}
+	
+	@SResponse(ResType = ResType.SEND_REDIRECT)
+	@SValidator(FORM_ID="studentForm")
+	public String studentRedirectJSONValidate(HttpServletRequest req,
+			HttpServletResponse resp) throws IOException {
+		String firstName = req.getParameter("firstName");
+		String emailId = req.getParameter("emailId");
+		System.out.println(firstName + ":studentRedirectJSONValidate:" + emailId);
+		return "/welcome.jsp";
+	}
 
 	/**
 	 * validation method in the same class. The validation method name can be
