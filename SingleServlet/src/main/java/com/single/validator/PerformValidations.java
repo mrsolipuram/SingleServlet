@@ -1,6 +1,7 @@
 package com.single.validator;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,16 +53,17 @@ public class PerformValidations {
 			String fieldValue, SValidationRules validationRules,
 			String formField, BeanErrors errors) {
 		String methodName = (String) fiedlRule.get("rule");
+		String ruleValue = (String)fiedlRule.get("ruleValue");
 		boolean result = false;
 		@SuppressWarnings("rawtypes")
 		Class classReq = validationRules.getBaseValidator().getClass();
 		// get the methodName
 		try {
 			if (methodName != null) {
+				Class[] parameters = getMethodParameters(ruleValue); 
 				@SuppressWarnings("unchecked")
-				Method method = classReq.getMethod(methodName,
-						new Class[] { String.class });
-				Object[] args = new Object[] { fieldValue };
+				Method method = classReq.getMethod(methodName,parameters);
+				Object[] args = getMethodArguments(fieldValue, ruleValue, parameters.length);
 				result = (Boolean) method.invoke(
 						validationRules.getBaseValidator(), args);
 				if (!result) {
@@ -73,6 +75,26 @@ public class PerformValidations {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	private Class[] getMethodParameters(String ruleValue){
+		Class[] args = new Class[]{String.class};
+		if(ruleValue != null){
+			if(!Boolean.parseBoolean(ruleValue)){
+				args  = Arrays.copyOf(args, args.length + 1);
+				args[args.length - 1] = String.class;
+			}
+		}
+		return args;
+	}
+	
+	private Object[] getMethodArguments(String fieldValue,String ruleValue,int plength){
+		Object[] args = new Object[] { fieldValue };
+		if(plength == 2){
+			args  = Arrays.copyOf(args, args.length + 1);
+			args[args.length - 1] = ruleValue;
+		}
+		return args;
 	}
 
 	private void addErrorMessage(String formField, BeanErrors errors,

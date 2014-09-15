@@ -2,32 +2,13 @@
 "studentForm":{
 	"rules":{
 		"firstName":[
-			{"rule":"required","message":"name.required"}
+			{"rule":"required","message":"name.required"},
+			{"rule":"minLength","ruleValue":"2", "message":"name.minlegth"}
 		],
 		"emailId":[
 			{"rule":"required","message":"email.required"},
 			{"rule":"email"}
 		]
-	}
-},
-"studentFormOld":{
-	"rules":{
-		"firstName":{
-			"required":true
-		},
-		"emailId":{
-			"required":true,
-			"email":true
-		}
-	},
-	"messages":{
-		"firstName":{
-			"required":"name.required"
-		},
-		"emailId":{
-			"required":"email.required",
-			"email":"email.invalied"
-		}
 	}
 }
 }

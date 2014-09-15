@@ -24,16 +24,16 @@ public class SBaseValidator {
 		return GenericValidator.isEmail(value);
 	}
 	
-	public boolean minLength(String value, int min){
-		return GenericValidator.minLength(value, min);
+	public boolean minLength(String value, String min){
+		return GenericValidator.minLength(value, Integer.parseInt(min));
 	}
 	
-	public  boolean maxLength(String value, int max){
-		return GenericValidator.maxLength(value, max);
+	public  boolean maxLength(String value, String max){
+		return GenericValidator.maxLength(value, Integer.parseInt(max));
 	}
 	
-	public boolean minValue(String value, int min){
-		return GenericValidator.minValue(Integer.parseInt(value), min);
+	public boolean minValue(String value, String min){
+		return GenericValidator.minValue(Integer.parseInt(value), Integer.parseInt(min));
 	}
 	
 	public boolean url(String value){
